@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.gzaudit.performanceAppraise.dao.appraiseScore.AppraiseScoreMapper" >
+  <resultMap id="BaseResultMap" type="cn.gov.gzaudit.performanceAppraise.pojo.appraiseScore.AppraiseScore" >
+    <id column="APPRAISE_CONTENT_ID" property="appraiseContentId" jdbcType="VARCHAR" />
+    <id column="EXAMPLE_ID" property="exampleId" jdbcType="VARCHAR" />
+    <id column="USER_ID" property="userId" jdbcType="VARCHAR" />
+    <result column="APPRAISE_ITEMS_TYPE" property="appraiseItemsType" jdbcType="VARCHAR" />
+    <result column="APPRAISE_SCORE" property="appraiseScore" jdbcType="NUMERIC" />
+    <result column="UPDATE_USER" property="updateUser" jdbcType="VARCHAR" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="STATISTICS_SIGN" property="statisticsSign" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    APPRAISE_CONTENT_ID, EXAMPLE_ID, USER_ID, APPRAISE_ITEMS_TYPE, APPRAISE_SCORE, UPDATE_USER, 
+    UPDATE_TIME, STATISTICS_SIGN
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="cn.gov.gzaudit.performanceAppraise.pojo.appraiseScore.AppraiseScoreKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_APPRAISE_SCORE
+    where APPRAISE_CONTENT_ID = #{appraiseContentId,jdbcType=VARCHAR}
+      and EXAMPLE_ID = #{exampleId,jdbcType=VARCHAR}
+      and USER_ID = #{userId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="cn.gov.gzaudit.performanceAppraise.pojo.appraiseScore.AppraiseScoreKey" >
+    delete from T_APPRAISE_SCORE
+    where APPRAISE_CONTENT_ID = #{appraiseContentId,jdbcType=VARCHAR}
+      and EXAMPLE_ID = #{exampleId,jdbcType=VARCHAR}
+      and USER_ID = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.gov.gzaudit.performanceAppraise.pojo.appraiseScore.AppraiseScore" >
+    insert into T_APPRAISE_SCORE (APPRAISE_CONTENT_ID, EXAMPLE_ID, USER_ID, 
+      APPRAISE_ITEMS_TYPE, APPRAISE_SCORE, UPDATE_USER, 
+      UPDATE_TIME, STATISTICS_SIGN)
+    values (#{appraiseContentId,jdbcType=VARCHAR}, #{exampleId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{appraiseItemsType,jdbcType=VARCHAR}, #{appraiseScore,jdbcType=NUMERIC}, #{updateUser,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{statisticsSign,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.gov.gzaudit.performanceAppraise.pojo.appraiseScore.AppraiseScore" >
+    insert into T_APPRAISE_SCORE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="appraiseContentId != null" >
+        APPRAISE_CONTENT_ID,
+      </if>
+      <if test="exampleId != null" >
+        EXAMPLE_ID,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="appraiseItemsType != null" >
+        APPRAISE_ITEMS_TYPE,
+      </if>
+      <if test="appraiseScore != null" >
+        APPRAISE_SCORE,
+      </if>
+      <if test="updateUser != null" >
+        UPDATE_USER,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="statisticsSign != null" >
+        STATISTICS_SIGN,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="appraiseContentId != null" >
+        #{appraiseContentId,jdbcType=VARCHAR},
+      </if>
+      <if test="exampleId != null" >
+        #{exampleId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="appraiseItemsType != null" >
+        #{appraiseItemsType,jdbcType=VARCHAR},
+      </if>
+      <if test="appraiseScore != null" >
+        #{appraiseScore,jdbcType=NUMERIC},
+      </if>
+      <if test="updateUser != null" >
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="statisticsSign != null" >
+        #{statisticsSign,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.gov.gzaudit.performanceAppraise.pojo.appraiseScore.AppraiseScore" >
+    update T_APPRAISE_SCORE
+    <set >
+      <if test="appraiseItemsType != null" >
+        APPRAISE_ITEMS_TYPE = #{appraiseItemsType,jdbcType=VARCHAR},
+      </if>
+      <if test="appraiseScore != null" >
+        APPRAISE_SCORE = #{appraiseScore,jdbcType=NUMERIC},
+      </if>
+      <if test="updateUser != null and updateUser != ''" >
+        UPDATE_USER = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUser != null and updateUser != ''" >
+        UPDATE_TIME = sysdate,
+      </if>
+      <if test="statisticsSign != null" >
+        STATISTICS_SIGN = #{statisticsSign,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where APPRAISE_CONTENT_ID = #{appraiseContentId,jdbcType=VARCHAR}
+      and EXAMPLE_ID = #{exampleId,jdbcType=VARCHAR}
+      and USER_ID = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.gov.gzaudit.performanceAppraise.pojo.appraiseScore.AppraiseScore" >
+    update T_APPRAISE_SCORE
+    set APPRAISE_ITEMS_TYPE = #{appraiseItemsType,jdbcType=VARCHAR},
+      APPRAISE_SCORE = #{appraiseScore,jdbcType=NUMERIC},
+      UPDATE_USER = #{updateUser,jdbcType=VARCHAR},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      STATISTICS_SIGN = #{statisticsSign,jdbcType=VARCHAR}
+    where APPRAISE_CONTENT_ID = #{appraiseContentId,jdbcType=VARCHAR}
+      and EXAMPLE_ID = #{exampleId,jdbcType=VARCHAR}
+      and USER_ID = #{userId,jdbcType=VARCHAR}
+  </update>
+  
+  <insert id="insertAppraiseScoreBatch" parameterType="java.lang.String" >
+    insert into T_APPRAISE_SCORE(APPRAISE_CONTENT_ID, EXAMPLE_ID, USER_ID, APPRAISE_ITEMS_TYPE, STATISTICS_SIGN) 
+	select t2.APPRAISE_CONTENT_ID,t1.EXAMPLE_ID,t3.USER_ID,t3.APPRAISE_ITEMS_TYPE,t3.STATISTICS_SIGN
+	from T_APPRAISE_EXAMPLE t1 
+	left join V_APPRAISE_MOULD t2 on t1.APPRAISE_MOULD_ID = t2.APPRAISE_MOULD_ID
+	left join T_APPRAISE_USER t3 on t1.EXAMPLE_ID = t3.EXAMPLE_ID
+	where t1.EXAMPLE_ID = #{exampleId,jdbcType=VARCHAR}
+  </insert>
+  <select id="getAppraiseScore" resultType="java.util.HashMap" parameterType="com.util.mybatispage.PageUtil" >
+  	select 
+	  	t1.EXAMPLE_ID,t1.APPRAISE_CONTENT_ID,t1.EXAMPLE_TITLE,
+		listagg(t1.USER_ID,',')within group(order by t1.USER_SORT_FLAG) as USER_ID,
+		listagg(t1.USER_NAME,',')within group(order by t1.USER_SORT_FLAG) as USER_NAME,
+		listagg(t1.APPRAISE_SCORE,',')within group(order by t1.USER_SORT_FLAG) as APPRAISE_SCORE,
+		t1.APPRAISE_CONTENT_ID,t1.CONTENT_SORT_FLAG,t1.ITEMS,t1.APPRAISE_OBJECT,
+		t1.CONTENT,t1.REQUIREMENT,t1.STANDARD_SCORE,t1.DEDUCT_POINTS_ITEMS,
+		t1.APPRAISE_ITEMS_TYPE,t1.APPRAISE_TYPE,t2.APPRAISE_SCORE1 
+	from V_APPRAISE_SCORE t1 
+	left join (
+		select EXAMPLE_ID,ITEMS,APPRAISE_TYPE,sum(SCORE_SUM)/count(USER_ID) as APPRAISE_SCORE1
+		from V_APPRAISE_SCORE_STATISTICS t1
+		group by t1.EXAMPLE_ID,APPRAISE_TYPE,t1.ITEMS
+		having sum(SCORED_NUM)=sum(SCORE_NUM) and APPRAISE_TYPE = '自评'
+	) t2 on t1.EXAMPLE_ID = t2.EXAMPLE_ID and t1.ITEMS = t2.ITEMS 
+	<where>
+  		t1.EXAMPLE_ID = #{queryObj.exampleId,jdbcType=VARCHAR}
+  		<if test="queryObj.userId != null and queryObj.userId != ''">
+  			and t1.USER_ID = #{queryObj.userId,jdbcType=VARCHAR}
+  		</if>
+  	</where>
+	group by t1.EXAMPLE_ID,t1.APPRAISE_CONTENT_ID,t1.EXAMPLE_TITLE,
+		 t1.APPRAISE_CONTENT_ID,t1.CONTENT_SORT_FLAG,t1.ITEMS,t1.APPRAISE_OBJECT,
+		 t1.CONTENT,t1.REQUIREMENT,t1.STANDARD_SCORE,t1.DEDUCT_POINTS_ITEMS,
+		 t1.APPRAISE_ITEMS_TYPE,t1.APPRAISE_TYPE,t2.APPRAISE_SCORE1 
+	order by t1.CONTENT_SORT_FLAG
+  </select>
+  <update id="updateByAppraiseItemsSelective"  >
+    update T_APPRAISE_SCORE
+    <set >
+      <if test="appraiseScore.appraiseItemsType != null" >
+        APPRAISE_ITEMS_TYPE = #{appraiseScore.appraiseItemsType,jdbcType=VARCHAR},
+      </if>
+      <if test="appraiseScore.appraiseScore != null" >
+        APPRAISE_SCORE = #{appraiseScore.appraiseScore,jdbcType=NUMERIC},
+      </if>
+      <if test="appraiseScore.updateUser != null and appraiseScore.updateUser != ''" >
+        UPDATE_USER = #{appraiseScore.updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="appraiseScore.updateUser != null and appraiseScore.updateUser != ''" >
+        UPDATE_TIME = sysdate,
+      </if>
+      <if test="appraiseScore.statisticsSign != null" >
+        STATISTICS_SIGN = #{appraiseScore.statisticsSign,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where APPRAISE_CONTENT_ID in (select APPRAISE_CONTENT_ID from T_APPRAISE_CONTENT where ITEMS = #{items,jdbcType=VARCHAR}) 
+      and EXAMPLE_ID = #{appraiseScore.exampleId,jdbcType=VARCHAR}
+      and USER_ID = #{appraiseScore.userId,jdbcType=VARCHAR}
+  </update>
+  <select id="getScoreStatistics" resultType="java.util.HashMap" parameterType="cn.gov.gzaudit.performanceAppraise.pojo.appraiseScore.AppraiseScore" >
+  	select t1.ITEMS,t1.USER_NAME,t1.SCORED_NUM,t1.SCORE_NUM,t1.SCORE_SUM 
+	from V_APPRAISE_SCORE_STATISTICS t1 
+	where t1.EXAMPLE_ID = #{exampleId,jdbcType=VARCHAR}
+	  and t1.USER_ID = #{userId,jdbcType=VARCHAR}
+  	order by t1.USER_SORT_FLAG,t1.CONTENT_SORT_FLAG
+  </select>
+  <select id="searchWeightsStatisticsGridData" resultType="java.util.HashMap" parameterType="com.util.mybatispage.PageUtil" >
+  	select t1.EXAMPLE_ID,t2.EXAMPLE_TITLE,t3.APPRAISE_STATUS_NUM,sum(t1.WEIGHTS_SCORE) as WEIGHTS_SCORE
+	from V_APPRAISE__SCORE_WEIGHTS_STATISTICS t1 
+	left join T_APPRAISE_EXAMPLE t2 on t1.EXAMPLE_ID = t2.EXAMPLE_ID
+	left join (
+		select EXAMPLE_ID,count(1) as APPRAISE_STATUS_NUM
+		from T_APPRAISE_USER
+		where APPRAISE_STATUS = 0
+		group by EXAMPLE_ID
+	) t3 on t1.EXAMPLE_ID = t3.EXAMPLE_ID 
+	group by t1.EXAMPLE_ID,t2.EXAMPLE_TITLE,t3.APPRAISE_STATUS_NUM
+  </select>
+  <select id="searchStatisticsDetailsGridJson" resultType="java.util.HashMap" parameterType="com.util.mybatispage.PageUtil" >
+	select t1.EXAMPLE_ID,t2.EXAMPLE_TITLE,t1.APPRAISE_TYPE,t1.WEIGHTS,t1.USER_NUM,
+		nvl(t3.USER_NUM,0) as USER_COMPLETE_NUM,round(t3.SCORE_SUM/t3.USER_NUM,2) as SCORE_AVG,round(t3.WEIGHTS_SCORE,2) as WEIGHTS_SCORE,round(t4.WEIGHTS_SCORE_SUM,2) as WEIGHTS_SCORE_SUM
+	from (
+		select EXAMPLE_ID,APPRAISE_TYPE,WEIGHTS,count(USER_ID) as USER_NUM
+		from T_APPRAISE_USER
+		group by EXAMPLE_ID,APPRAISE_TYPE,WEIGHTS
+	) t1
+	left join T_APPRAISE_EXAMPLE t2 on t1.EXAMPLE_ID = t2.EXAMPLE_ID
+	left join V_APPRAISE__SCORE_WEIGHTS_STATISTICS t3 on t1.EXAMPLE_ID = t3.EXAMPLE_ID and t1.APPRAISE_TYPE = t3.APPRAISE_TYPE
+	left join (
+		select EXAMPLE_ID,sum(WEIGHTS_SCORE) as WEIGHTS_SCORE_SUM
+		from V_APPRAISE__SCORE_WEIGHTS_STATISTICS
+		group by EXAMPLE_ID
+	) t4 on t1.EXAMPLE_ID = t4.EXAMPLE_ID 
+	where t1.EXAMPLE_ID = #{queryObj.exampleId,jdbcType=VARCHAR}
+	order by t2.EXAMPLE_TITLE,t1.EXAMPLE_ID,t1.WEIGHTS desc
+  </select>
+</mapper>

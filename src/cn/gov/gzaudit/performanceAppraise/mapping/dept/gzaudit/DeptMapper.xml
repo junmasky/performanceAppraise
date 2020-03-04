@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.gzaudit.performanceAppraise.dao.dept.gzaudit.DeptMapper" >
+  <resultMap id="BaseResultMap" type="cn.gov.gzaudit.performanceAppraise.pojo.dept.gzaudit.Dept" >
+    <id column="DEPT_ID" property="deptId" jdbcType="VARCHAR" />
+    <result column="DEPT_NAME" property="deptName" jdbcType="VARCHAR" />
+    <result column="ISAUDIT" property="isaudit" jdbcType="NUMERIC" />
+    <result column="UNIT_ID" property="unitId" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="PARENTID" property="parentid" jdbcType="VARCHAR" />
+    <result column="PATH_LEVEL" property="pathLevel" jdbcType="NUMERIC" />
+    <result column="SORTFLAG" property="sortflag" jdbcType="NUMERIC" />
+    <result column="CREATEBY" property="createby" jdbcType="VARCHAR" />
+    <result column="CREATEDATE" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="UPDATEBY" property="updateby" jdbcType="VARCHAR" />
+    <result column="UPDATEDATE" property="updatedate" jdbcType="TIMESTAMP" />
+    <result column="ISALONG" property="isalong" jdbcType="NUMERIC" />
+    <result column="DEPTCODE" property="deptcode" jdbcType="VARCHAR" />
+    <result column="DEPTSHORTNAME" property="deptshortname" jdbcType="VARCHAR" />
+    <result column="ISALL" property="isall" jdbcType="VARCHAR" />
+    <result column="ECONOMIC_RESPONSIBLEBY" property="economicResponsibleby" jdbcType="VARCHAR" />
+    <result column="PHONE" property="phone" jdbcType="VARCHAR" />
+    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="ADMINISTRATIONCODE" property="administrationcode" jdbcType="VARCHAR" />
+    <result column="CHECKCODE" property="checkcode" jdbcType="VARCHAR" />
+    <result column="DEPARTMENTCLASS" property="departmentclass" jdbcType="VARCHAR" />
+    <result column="DEPARTMENTCODE" property="departmentcode" jdbcType="VARCHAR" />
+    <result column="UNITTYPE" property="unittype" jdbcType="VARCHAR" />
+    <result column="UNITLEVEL" property="unitlevel" jdbcType="VARCHAR" />
+    <result column="DEPT_TYPE" property="deptType" jdbcType="VARCHAR" />
+    <result column="DEPT_LEADER" property="deptLeader" jdbcType="VARCHAR" />
+    <result column="DEPT_CHARGE_PERSON" property="deptChargePerson" jdbcType="VARCHAR" />
+    <result column="ADMINISTRATIVE_LEVEL" property="administrativeLevel" jdbcType="VARCHAR" />
+    <result column="DEPT_DATE" property="deptDate" jdbcType="VARCHAR" />
+    <result column="DELETE_DATE" property="deleteDate" jdbcType="VARCHAR" />
+    <result column="OLD_DEPT_ID" property="oldDeptId" jdbcType="VARCHAR" />
+    <result column="DEPT_CODE" property="deptCode" jdbcType="VARCHAR" />
+    <result column="DEPT_STATE" property="deptState" jdbcType="VARCHAR" />
+    <result column="DEPT_ASSIST_LEADER" property="deptAssistLeader" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.gov.gzaudit.performanceAppraise.pojo.dept.gzaudit.Dept" extends="BaseResultMap" >
+    <result column="SUMMARY" property="summary" jdbcType="CLOB" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    DEPT_ID, DEPT_NAME, ISAUDIT, UNIT_ID, REMARK, PARENTID, PATH_LEVEL, SORTFLAG, CREATEBY, 
+    CREATEDATE, UPDATEBY, UPDATEDATE, ISALONG, DEPTCODE, DEPTSHORTNAME, ISALL, ECONOMIC_RESPONSIBLEBY, 
+    PHONE, ADDRESS, ADMINISTRATIONCODE, CHECKCODE, DEPARTMENTCLASS, DEPARTMENTCODE, UNITTYPE, 
+    UNITLEVEL, DEPT_TYPE, DEPT_LEADER, DEPT_CHARGE_PERSON, ADMINISTRATIVE_LEVEL, DEPT_DATE, 
+    DELETE_DATE, OLD_DEPT_ID, DEPT_CODE, DEPT_STATE, DEPT_ASSIST_LEADER
+  </sql>
+  <sql id="Blob_Column_List" >
+    SUMMARY
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from GZAUDIT.MT_BS_DEPT
+    where DEPT_ID = #{deptId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from GZAUDIT.MT_BS_DEPT
+    where DEPT_ID = #{deptId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.gov.gzaudit.performanceAppraise.pojo.dept.gzaudit.Dept" >
+    insert into GZAUDIT.MT_BS_DEPT (DEPT_ID, DEPT_NAME, ISAUDIT, 
+      UNIT_ID, REMARK, PARENTID, 
+      PATH_LEVEL, SORTFLAG, CREATEBY, 
+      CREATEDATE, UPDATEBY, UPDATEDATE, 
+      ISALONG, DEPTCODE, DEPTSHORTNAME, 
+      ISALL, ECONOMIC_RESPONSIBLEBY, PHONE, 
+      ADDRESS, ADMINISTRATIONCODE, CHECKCODE, 
+      DEPARTMENTCLASS, DEPARTMENTCODE, UNITTYPE, 
+      UNITLEVEL, DEPT_TYPE, DEPT_LEADER, 
+      DEPT_CHARGE_PERSON, ADMINISTRATIVE_LEVEL, 
+      DEPT_DATE, DELETE_DATE, OLD_DEPT_ID, 
+      DEPT_CODE, DEPT_STATE, DEPT_ASSIST_LEADER, 
+      SUMMARY)
+    values (#{deptId,jdbcType=VARCHAR}, #{deptName,jdbcType=VARCHAR}, #{isaudit,jdbcType=NUMERIC}, 
+      #{unitId,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{parentid,jdbcType=VARCHAR}, 
+      #{pathLevel,jdbcType=NUMERIC}, #{sortflag,jdbcType=NUMERIC}, #{createby,jdbcType=VARCHAR}, 
+      #{createdate,jdbcType=TIMESTAMP}, #{updateby,jdbcType=VARCHAR}, #{updatedate,jdbcType=TIMESTAMP}, 
+      #{isalong,jdbcType=NUMERIC}, #{deptcode,jdbcType=VARCHAR}, #{deptshortname,jdbcType=VARCHAR}, 
+      #{isall,jdbcType=VARCHAR}, #{economicResponsibleby,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{administrationcode,jdbcType=VARCHAR}, #{checkcode,jdbcType=VARCHAR}, 
+      #{departmentclass,jdbcType=VARCHAR}, #{departmentcode,jdbcType=VARCHAR}, #{unittype,jdbcType=VARCHAR}, 
+      #{unitlevel,jdbcType=VARCHAR}, #{deptType,jdbcType=VARCHAR}, #{deptLeader,jdbcType=VARCHAR}, 
+      #{deptChargePerson,jdbcType=VARCHAR}, #{administrativeLevel,jdbcType=VARCHAR}, 
+      #{deptDate,jdbcType=VARCHAR}, #{deleteDate,jdbcType=VARCHAR}, #{oldDeptId,jdbcType=VARCHAR}, 
+      #{deptCode,jdbcType=VARCHAR}, #{deptState,jdbcType=VARCHAR}, #{deptAssistLeader,jdbcType=VARCHAR}, 
+      #{summary,jdbcType=CLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.gov.gzaudit.performanceAppraise.pojo.dept.gzaudit.Dept" >
+    insert into GZAUDIT.MT_BS_DEPT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="deptId != null" >
+        DEPT_ID,
+      </if>
+      <if test="deptName != null" >
+        DEPT_NAME,
+      </if>
+      <if test="isaudit != null" >
+        ISAUDIT,
+      </if>
+      <if test="unitId != null" >
+        UNIT_ID,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="parentid != null" >
+        PARENTID,
+      </if>
+      <if test="pathLevel != null" >
+        PATH_LEVEL,
+      </if>
+      <if test="sortflag != null" >
+        SORTFLAG,
+      </if>
+      <if test="createby != null" >
+        CREATEBY,
+      </if>
+      <if test="createdate != null" >
+        CREATEDATE,
+      </if>
+      <if test="updateby != null" >
+        UPDATEBY,
+      </if>
+      <if test="updatedate != null" >
+        UPDATEDATE,
+      </if>
+      <if test="isalong != null" >
+        ISALONG,
+      </if>
+      <if test="deptcode != null" >
+        DEPTCODE,
+      </if>
+      <if test="deptshortname != null" >
+        DEPTSHORTNAME,
+      </if>
+      <if test="isall != null" >
+        ISALL,
+      </if>
+      <if test="economicResponsibleby != null" >
+        ECONOMIC_RESPONSIBLEBY,
+      </if>
+      <if test="phone != null" >
+        PHONE,
+      </if>
+      <if test="address != null" >
+        ADDRESS,
+      </if>
+      <if test="administrationcode != null" >
+        ADMINISTRATIONCODE,
+      </if>
+      <if test="checkcode != null" >
+        CHECKCODE,
+      </if>
+      <if test="departmentclass != null" >
+        DEPARTMENTCLASS,
+      </if>
+      <if test="departmentcode != null" >
+        DEPARTMENTCODE,
+      </if>
+      <if test="unittype != null" >
+        UNITTYPE,
+      </if>
+      <if test="unitlevel != null" >
+        UNITLEVEL,
+      </if>
+      <if test="deptType != null" >
+        DEPT_TYPE,
+      </if>
+      <if test="deptLeader != null" >
+        DEPT_LEADER,
+      </if>
+      <if test="deptChargePerson != null" >
+        DEPT_CHARGE_PERSON,
+      </if>
+      <if test="administrativeLevel != null" >
+        ADMINISTRATIVE_LEVEL,
+      </if>
+      <if test="deptDate != null" >
+        DEPT_DATE,
+      </if>
+      <if test="deleteDate != null" >
+        DELETE_DATE,
+      </if>
+      <if test="oldDeptId != null" >
+        OLD_DEPT_ID,
+      </if>
+      <if test="deptCode != null" >
+        DEPT_CODE,
+      </if>
+      <if test="deptState != null" >
+        DEPT_STATE,
+      </if>
+      <if test="deptAssistLeader != null" >
+        DEPT_ASSIST_LEADER,
+      </if>
+      <if test="summary != null" >
+        SUMMARY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="deptId != null" >
+        #{deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null" >
+        #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="isaudit != null" >
+        #{isaudit,jdbcType=NUMERIC},
+      </if>
+      <if test="unitId != null" >
+        #{unitId,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        #{parentid,jdbcType=VARCHAR},
+      </if>
+      <if test="pathLevel != null" >
+        #{pathLevel,jdbcType=NUMERIC},
+      </if>
+      <if test="sortflag != null" >
+        #{sortflag,jdbcType=NUMERIC},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null" >
+        #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null" >
+        #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isalong != null" >
+        #{isalong,jdbcType=NUMERIC},
+      </if>
+      <if test="deptcode != null" >
+        #{deptcode,jdbcType=VARCHAR},
+      </if>
+      <if test="deptshortname != null" >
+        #{deptshortname,jdbcType=VARCHAR},
+      </if>
+      <if test="isall != null" >
+        #{isall,jdbcType=VARCHAR},
+      </if>
+      <if test="economicResponsibleby != null" >
+        #{economicResponsibleby,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="administrationcode != null" >
+        #{administrationcode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkcode != null" >
+        #{checkcode,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentclass != null" >
+        #{departmentclass,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentcode != null" >
+        #{departmentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="unittype != null" >
+        #{unittype,jdbcType=VARCHAR},
+      </if>
+      <if test="unitlevel != null" >
+        #{unitlevel,jdbcType=VARCHAR},
+      </if>
+      <if test="deptType != null" >
+        #{deptType,jdbcType=VARCHAR},
+      </if>
+      <if test="deptLeader != null" >
+        #{deptLeader,jdbcType=VARCHAR},
+      </if>
+      <if test="deptChargePerson != null" >
+        #{deptChargePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="administrativeLevel != null" >
+        #{administrativeLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="deptDate != null" >
+        #{deptDate,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteDate != null" >
+        #{deleteDate,jdbcType=VARCHAR},
+      </if>
+      <if test="oldDeptId != null" >
+        #{oldDeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="deptCode != null" >
+        #{deptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deptState != null" >
+        #{deptState,jdbcType=VARCHAR},
+      </if>
+      <if test="deptAssistLeader != null" >
+        #{deptAssistLeader,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null" >
+        #{summary,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.gov.gzaudit.performanceAppraise.pojo.dept.gzaudit.Dept" >
+    update GZAUDIT.MT_BS_DEPT
+    <set >
+      <if test="deptName != null" >
+        DEPT_NAME = #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="isaudit != null" >
+        ISAUDIT = #{isaudit,jdbcType=NUMERIC},
+      </if>
+      <if test="unitId != null" >
+        UNIT_ID = #{unitId,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        PARENTID = #{parentid,jdbcType=VARCHAR},
+      </if>
+      <if test="pathLevel != null" >
+        PATH_LEVEL = #{pathLevel,jdbcType=NUMERIC},
+      </if>
+      <if test="sortflag != null" >
+        SORTFLAG = #{sortflag,jdbcType=NUMERIC},
+      </if>
+      <if test="createby != null" >
+        CREATEBY = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        CREATEDATE = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null" >
+        UPDATEBY = #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null" >
+        UPDATEDATE = #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isalong != null" >
+        ISALONG = #{isalong,jdbcType=NUMERIC},
+      </if>
+      <if test="deptcode != null" >
+        DEPTCODE = #{deptcode,jdbcType=VARCHAR},
+      </if>
+      <if test="deptshortname != null" >
+        DEPTSHORTNAME = #{deptshortname,jdbcType=VARCHAR},
+      </if>
+      <if test="isall != null" >
+        ISALL = #{isall,jdbcType=VARCHAR},
+      </if>
+      <if test="economicResponsibleby != null" >
+        ECONOMIC_RESPONSIBLEBY = #{economicResponsibleby,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="administrationcode != null" >
+        ADMINISTRATIONCODE = #{administrationcode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkcode != null" >
+        CHECKCODE = #{checkcode,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentclass != null" >
+        DEPARTMENTCLASS = #{departmentclass,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentcode != null" >
+        DEPARTMENTCODE = #{departmentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="unittype != null" >
+        UNITTYPE = #{unittype,jdbcType=VARCHAR},
+      </if>
+      <if test="unitlevel != null" >
+        UNITLEVEL = #{unitlevel,jdbcType=VARCHAR},
+      </if>
+      <if test="deptType != null" >
+        DEPT_TYPE = #{deptType,jdbcType=VARCHAR},
+      </if>
+      <if test="deptLeader != null" >
+        DEPT_LEADER = #{deptLeader,jdbcType=VARCHAR},
+      </if>
+      <if test="deptChargePerson != null" >
+        DEPT_CHARGE_PERSON = #{deptChargePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="administrativeLevel != null" >
+        ADMINISTRATIVE_LEVEL = #{administrativeLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="deptDate != null" >
+        DEPT_DATE = #{deptDate,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteDate != null" >
+        DELETE_DATE = #{deleteDate,jdbcType=VARCHAR},
+      </if>
+      <if test="oldDeptId != null" >
+        OLD_DEPT_ID = #{oldDeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="deptCode != null" >
+        DEPT_CODE = #{deptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deptState != null" >
+        DEPT_STATE = #{deptState,jdbcType=VARCHAR},
+      </if>
+      <if test="deptAssistLeader != null" >
+        DEPT_ASSIST_LEADER = #{deptAssistLeader,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null" >
+        SUMMARY = #{summary,jdbcType=CLOB},
+      </if>
+    </set>
+    where DEPT_ID = #{deptId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.gov.gzaudit.performanceAppraise.pojo.dept.gzaudit.Dept" >
+    update GZAUDIT.MT_BS_DEPT
+    set DEPT_NAME = #{deptName,jdbcType=VARCHAR},
+      ISAUDIT = #{isaudit,jdbcType=NUMERIC},
+      UNIT_ID = #{unitId,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      PARENTID = #{parentid,jdbcType=VARCHAR},
+      PATH_LEVEL = #{pathLevel,jdbcType=NUMERIC},
+      SORTFLAG = #{sortflag,jdbcType=NUMERIC},
+      CREATEBY = #{createby,jdbcType=VARCHAR},
+      CREATEDATE = #{createdate,jdbcType=TIMESTAMP},
+      UPDATEBY = #{updateby,jdbcType=VARCHAR},
+      UPDATEDATE = #{updatedate,jdbcType=TIMESTAMP},
+      ISALONG = #{isalong,jdbcType=NUMERIC},
+      DEPTCODE = #{deptcode,jdbcType=VARCHAR},
+      DEPTSHORTNAME = #{deptshortname,jdbcType=VARCHAR},
+      ISALL = #{isall,jdbcType=VARCHAR},
+      ECONOMIC_RESPONSIBLEBY = #{economicResponsibleby,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      ADMINISTRATIONCODE = #{administrationcode,jdbcType=VARCHAR},
+      CHECKCODE = #{checkcode,jdbcType=VARCHAR},
+      DEPARTMENTCLASS = #{departmentclass,jdbcType=VARCHAR},
+      DEPARTMENTCODE = #{departmentcode,jdbcType=VARCHAR},
+      UNITTYPE = #{unittype,jdbcType=VARCHAR},
+      UNITLEVEL = #{unitlevel,jdbcType=VARCHAR},
+      DEPT_TYPE = #{deptType,jdbcType=VARCHAR},
+      DEPT_LEADER = #{deptLeader,jdbcType=VARCHAR},
+      DEPT_CHARGE_PERSON = #{deptChargePerson,jdbcType=VARCHAR},
+      ADMINISTRATIVE_LEVEL = #{administrativeLevel,jdbcType=VARCHAR},
+      DEPT_DATE = #{deptDate,jdbcType=VARCHAR},
+      DELETE_DATE = #{deleteDate,jdbcType=VARCHAR},
+      OLD_DEPT_ID = #{oldDeptId,jdbcType=VARCHAR},
+      DEPT_CODE = #{deptCode,jdbcType=VARCHAR},
+      DEPT_STATE = #{deptState,jdbcType=VARCHAR},
+      DEPT_ASSIST_LEADER = #{deptAssistLeader,jdbcType=VARCHAR},
+      SUMMARY = #{summary,jdbcType=CLOB}
+    where DEPT_ID = #{deptId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.gov.gzaudit.performanceAppraise.pojo.dept.gzaudit.Dept" >
+    update GZAUDIT.MT_BS_DEPT
+    set DEPT_NAME = #{deptName,jdbcType=VARCHAR},
+      ISAUDIT = #{isaudit,jdbcType=NUMERIC},
+      UNIT_ID = #{unitId,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      PARENTID = #{parentid,jdbcType=VARCHAR},
+      PATH_LEVEL = #{pathLevel,jdbcType=NUMERIC},
+      SORTFLAG = #{sortflag,jdbcType=NUMERIC},
+      CREATEBY = #{createby,jdbcType=VARCHAR},
+      CREATEDATE = #{createdate,jdbcType=TIMESTAMP},
+      UPDATEBY = #{updateby,jdbcType=VARCHAR},
+      UPDATEDATE = #{updatedate,jdbcType=TIMESTAMP},
+      ISALONG = #{isalong,jdbcType=NUMERIC},
+      DEPTCODE = #{deptcode,jdbcType=VARCHAR},
+      DEPTSHORTNAME = #{deptshortname,jdbcType=VARCHAR},
+      ISALL = #{isall,jdbcType=VARCHAR},
+      ECONOMIC_RESPONSIBLEBY = #{economicResponsibleby,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      ADMINISTRATIONCODE = #{administrationcode,jdbcType=VARCHAR},
+      CHECKCODE = #{checkcode,jdbcType=VARCHAR},
+      DEPARTMENTCLASS = #{departmentclass,jdbcType=VARCHAR},
+      DEPARTMENTCODE = #{departmentcode,jdbcType=VARCHAR},
+      UNITTYPE = #{unittype,jdbcType=VARCHAR},
+      UNITLEVEL = #{unitlevel,jdbcType=VARCHAR},
+      DEPT_TYPE = #{deptType,jdbcType=VARCHAR},
+      DEPT_LEADER = #{deptLeader,jdbcType=VARCHAR},
+      DEPT_CHARGE_PERSON = #{deptChargePerson,jdbcType=VARCHAR},
+      ADMINISTRATIVE_LEVEL = #{administrativeLevel,jdbcType=VARCHAR},
+      DEPT_DATE = #{deptDate,jdbcType=VARCHAR},
+      DELETE_DATE = #{deleteDate,jdbcType=VARCHAR},
+      OLD_DEPT_ID = #{oldDeptId,jdbcType=VARCHAR},
+      DEPT_CODE = #{deptCode,jdbcType=VARCHAR},
+      DEPT_STATE = #{deptState,jdbcType=VARCHAR},
+      DEPT_ASSIST_LEADER = #{deptAssistLeader,jdbcType=VARCHAR}
+    where DEPT_ID = #{deptId,jdbcType=VARCHAR}
+  </update>
+</mapper>

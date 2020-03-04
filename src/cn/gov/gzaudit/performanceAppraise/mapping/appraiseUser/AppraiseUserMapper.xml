@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.gzaudit.performanceAppraise.dao.appraiseUser.AppraiseUserMapper" >
+  <resultMap id="BaseResultMap" type="cn.gov.gzaudit.performanceAppraise.pojo.appraiseUser.AppraiseUser" >
+    <id column="USER_ID" property="userId" jdbcType="VARCHAR" />
+    <id column="EXAMPLE_ID" property="exampleId" jdbcType="VARCHAR" />
+    <result column="APPRAISE_ITEMS_TYPE" property="appraiseItemsType" jdbcType="VARCHAR" />
+    <result column="APPRAISE_TYPE" property="appraiseType" jdbcType="VARCHAR" />
+    <result column="SORT_FLAG" property="sortFlag" jdbcType="NUMERIC" />
+    <result column="UPDATE_USER" property="updateUser" jdbcType="VARCHAR" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="STATISTICS_SIGN" property="statisticsSign" jdbcType="VARCHAR" />
+    <result column="WEIGHTS" property="weights" jdbcType="NUMERIC" />
+    <result column="APPRAISE_STATUS" property="appraiseStatus" jdbcType="NUMERIC" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    USER_ID, EXAMPLE_ID, APPRAISE_ITEMS_TYPE, APPRAISE_TYPE, SORT_FLAG, UPDATE_USER, 
+    UPDATE_TIME, STATISTICS_SIGN, WEIGHTS, APPRAISE_STATUS
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="cn.gov.gzaudit.performanceAppraise.pojo.appraiseUser.AppraiseUserKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_APPRAISE_USER
+    where USER_ID = #{userId,jdbcType=VARCHAR}
+      and EXAMPLE_ID = #{exampleId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="cn.gov.gzaudit.performanceAppraise.pojo.appraiseUser.AppraiseUserKey" >
+    delete from T_APPRAISE_USER
+    where USER_ID = #{userId,jdbcType=VARCHAR}
+      and EXAMPLE_ID = #{exampleId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.gov.gzaudit.performanceAppraise.pojo.appraiseUser.AppraiseUser" >
+    insert into T_APPRAISE_USER (USER_ID, EXAMPLE_ID, APPRAISE_ITEMS_TYPE, 
+      APPRAISE_TYPE, SORT_FLAG, UPDATE_USER, 
+      UPDATE_TIME, STATISTICS_SIGN, WEIGHTS, 
+      APPRAISE_STATUS)
+    values (#{userId,jdbcType=VARCHAR}, #{exampleId,jdbcType=VARCHAR}, #{appraiseItemsType,jdbcType=VARCHAR}, 
+      #{appraiseType,jdbcType=VARCHAR}, #{sortFlag,jdbcType=NUMERIC}, #{updateUser,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{statisticsSign,jdbcType=VARCHAR}, #{weights,jdbcType=NUMERIC}, 
+      #{appraiseStatus,jdbcType=NUMERIC})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.gov.gzaudit.performanceAppraise.pojo.appraiseUser.AppraiseUser" >
+    insert into T_APPRAISE_USER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="exampleId != null" >
+        EXAMPLE_ID,
+      </if>
+      <if test="appraiseItemsType != null" >
+        APPRAISE_ITEMS_TYPE,
+      </if>
+      <if test="appraiseType != null" >
+        APPRAISE_TYPE,
+      </if>
+      <if test="sortFlag != null" >
+        SORT_FLAG,
+      </if>
+      <if test="updateUser != null" >
+        UPDATE_USER,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="statisticsSign != null" >
+        STATISTICS_SIGN,
+      </if>
+      <if test="weights != null" >
+        WEIGHTS,
+      </if>
+      <if test="appraiseStatus != null" >
+        APPRAISE_STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="exampleId != null" >
+        #{exampleId,jdbcType=VARCHAR},
+      </if>
+      <if test="appraiseItemsType != null" >
+        #{appraiseItemsType,jdbcType=VARCHAR},
+      </if>
+      <if test="appraiseType != null" >
+        #{appraiseType,jdbcType=VARCHAR},
+      </if>
+      <if test="sortFlag != null" >
+        #{sortFlag,jdbcType=NUMERIC},
+      </if>
+      <if test="updateUser != null" >
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="statisticsSign != null" >
+        #{statisticsSign,jdbcType=VARCHAR},
+      </if>
+      <if test="weights != null" >
+        #{weights,jdbcType=NUMERIC},
+      </if>
+      <if test="appraiseStatus != null" >
+        #{appraiseStatus,jdbcType=NUMERIC},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.gov.gzaudit.performanceAppraise.pojo.appraiseUser.AppraiseUser" >
+    update T_APPRAISE_USER
+    <set >
+      <if test="appraiseItemsType != null" >
+        APPRAISE_ITEMS_TYPE = #{appraiseItemsType,jdbcType=VARCHAR},
+      </if>
+      <if test="appraiseType != null" >
+        APPRAISE_TYPE = #{appraiseType,jdbcType=VARCHAR},
+      </if>
+      <if test="sortFlag != null" >
+        SORT_FLAG = #{sortFlag,jdbcType=NUMERIC},
+      </if>
+      <if test="updateUser != null and updateUser != ''" >
+        UPDATE_USER = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUser != null and updateUser != ''" >
+        UPDATE_TIME = sysdate,
+      </if>
+      <if test="statisticsSign != null" >
+        STATISTICS_SIGN = #{statisticsSign,jdbcType=VARCHAR},
+      </if>
+      <if test="weights != null" >
+        WEIGHTS = #{weights,jdbcType=NUMERIC},
+      </if>
+      <if test="appraiseStatus != null" >
+        APPRAISE_STATUS = #{appraiseStatus,jdbcType=NUMERIC},
+      </if>
+    </set>
+    where USER_ID = #{userId,jdbcType=VARCHAR}
+      and EXAMPLE_ID = #{exampleId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.gov.gzaudit.performanceAppraise.pojo.appraiseUser.AppraiseUser" >
+    update T_APPRAISE_USER
+    set APPRAISE_ITEMS_TYPE = #{appraiseItemsType,jdbcType=VARCHAR},
+      APPRAISE_TYPE = #{appraiseType,jdbcType=VARCHAR},
+      SORT_FLAG = #{sortFlag,jdbcType=NUMERIC},
+      UPDATE_USER = #{updateUser,jdbcType=VARCHAR},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      STATISTICS_SIGN = #{statisticsSign,jdbcType=VARCHAR},
+      WEIGHTS = #{weights,jdbcType=NUMERIC},
+      APPRAISE_STATUS = #{appraiseStatus,jdbcType=NUMERIC}
+    where USER_ID = #{userId,jdbcType=VARCHAR}
+      and EXAMPLE_ID = #{exampleId,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="getAppraiseUserByExampleId" resultType="java.util.HashMap" parameterType="java.lang.String" >
+  	select 
+  	<include refid="Base_Column_List" />
+	from T_APPRAISE_USER T1 
+	where EXAMPLE_ID = #{exampleId,jdbcType=VARCHAR}
+  </select>
+  <select id="searchAppraiseUserGridData" resultType="java.util.HashMap" parameterType="com.util.mybatispage.PageUtil" >
+  	select 
+  		t1.USER_ID,t2.EXAMPLE_ID,t1.USER_NAME,t2.EXAMPLE_TITLE,t1.APPRAISE_TYPE,t1.APPRAISE_STATUS
+	from V_APPRAISE_USER t1 
+	left join T_APPRAISE_EXAMPLE t2 on t1.EXAMPLE_ID = t2.EXAMPLE_ID
+	<where>
+		<if test="queryObj.appraiseStatus != null">
+  			and t1.APPRAISE_STATUS = #{queryObj.appraiseStatus,jdbcType=NUMERIC}
+  		</if>
+  		<if test="queryObj.userId != null and queryObj.userId != ''">
+  			and t1.USER_ID = #{queryObj.userId,jdbcType=VARCHAR}
+  		</if>
+  		<if test="queryObj.exampleId != null and queryObj.exampleId != ''">
+  			and t1.EXAMPLE_ID = #{queryObj.exampleId,jdbcType=VARCHAR}
+  		</if>
+  		<if test="queryObj.appraiseType != null and queryObj.appraiseType != ''">
+  			and t1.APPRAISE_TYPE = #{queryObj.appraiseType,jdbcType=VARCHAR}
+  		</if>
+  	</where>
+	order by t2.EXAMPLE_TITLE,t1.APPRAISE_STATUS,t1.SORT_FLAG desc
+  </select>
+
+</mapper>

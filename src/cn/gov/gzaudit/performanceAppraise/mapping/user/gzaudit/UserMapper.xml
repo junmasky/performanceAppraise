@@ -1,0 +1,868 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.gzaudit.performanceAppraise.dao.user.gzaudit.UserMapper" >
+  <resultMap id="BaseResultMap" type="cn.gov.gzaudit.performanceAppraise.pojo.user.gzaudit.User" >
+    <id column="USER_ID" property="userId" jdbcType="VARCHAR" />
+    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+    <result column="LOGIN_ID" property="loginId" jdbcType="VARCHAR" />
+    <result column="USER_PASSWORD" property="userPassword" jdbcType="VARCHAR" />
+    <result column="USER_SEX" property="userSex" jdbcType="VARCHAR" />
+    <result column="AUDIT_YEAR" property="auditYear" jdbcType="NUMERIC" />
+    <result column="UNIT_ID" property="unitId" jdbcType="VARCHAR" />
+    <result column="DEPT_ID" property="deptId" jdbcType="VARCHAR" />
+    <result column="STATION" property="station" jdbcType="VARCHAR" />
+    <result column="OFFICE_PHONE" property="officePhone" jdbcType="VARCHAR" />
+    <result column="PHONE" property="phone" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="BIRTHDAY" property="birthday" jdbcType="TIMESTAMP" />
+    <result column="NATION" property="nation" jdbcType="VARCHAR" />
+    <result column="BORN_PLACE" property="bornPlace" jdbcType="VARCHAR" />
+    <result column="PAPER_NAME" property="paperName" jdbcType="VARCHAR" />
+    <result column="PAPER_NUM" property="paperNum" jdbcType="VARCHAR" />
+    <result column="EDUCATION" property="education" jdbcType="VARCHAR" />
+    <result column="GRA_COLLEGE" property="graCollege" jdbcType="VARCHAR" />
+    <result column="LEAGUE" property="league" jdbcType="VARCHAR" />
+    <result column="JOIN_TIME" property="joinTime" jdbcType="TIMESTAMP" />
+    <result column="WORK_STATUS" property="workStatus" jdbcType="VARCHAR" />
+    <result column="USER_STATE" property="userState" jdbcType="NUMERIC" />
+    <result column="AUDIT_USER_TYPE" property="auditUserType" jdbcType="NUMERIC" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="SORTFLAG" property="sortflag" jdbcType="NUMERIC" />
+    <result column="CREATEBY" property="createby" jdbcType="VARCHAR" />
+    <result column="CREATEDATE" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="UPDATEBY" property="updateby" jdbcType="VARCHAR" />
+    <result column="UPDATEDATE" property="updatedate" jdbcType="TIMESTAMP" />
+    <result column="USER_TYPE" property="userType" jdbcType="VARCHAR" />
+    <result column="POLITICAL_LANDSCAPE" property="politicalLandscape" jdbcType="VARCHAR" />
+    <result column="HAVEJOB_DATE" property="havejobDate" jdbcType="TIMESTAMP" />
+    <result column="LEAVEJOB_DATE" property="leavejobDate" jdbcType="TIMESTAMP" />
+    <result column="TRAIN_COLLEGE" property="trainCollege" jdbcType="VARCHAR" />
+    <result column="FAX" property="fax" jdbcType="VARCHAR" />
+    <result column="MAILCODE" property="mailcode" jdbcType="VARCHAR" />
+    <result column="EMAIL_OUT" property="emailOut" jdbcType="VARCHAR" />
+    <result column="ROOMNO" property="roomno" jdbcType="VARCHAR" />
+    <result column="MOBILE" property="mobile" jdbcType="VARCHAR" />
+    <result column="LINE_PHONE" property="linePhone" jdbcType="VARCHAR" />
+    <result column="ADDR" property="addr" jdbcType="VARCHAR" />
+    <result column="EXPERT_JB" property="expertJb" jdbcType="VARCHAR" />
+    <result column="EXPERT_GOOD_AT" property="expertGoodAt" jdbcType="VARCHAR" />
+    <result column="EXPERT" property="expert" jdbcType="NUMERIC" />
+    <result column="ISSA" property="issa" jdbcType="NUMERIC" />
+    <result column="DESKTOP" property="desktop" jdbcType="VARCHAR" />
+    <result column="LASTIP" property="lastip" jdbcType="VARCHAR" />
+    <result column="PICTURENAME" property="picturename" jdbcType="VARCHAR" />
+    <result column="GRAPHNAME" property="graphname" jdbcType="VARCHAR" />
+    <result column="LOGINFLAG" property="loginflag" jdbcType="NUMERIC" />
+    <result column="AUDIT_ORGAN" property="auditOrgan" jdbcType="VARCHAR" />
+    <result column="PROFESSIONAL_BACKGROUND" property="professionalBackground" jdbcType="VARCHAR" />
+    <result column="PROFESSIONAL_TECH_QUAL" property="professionalTechQual" jdbcType="VARCHAR" />
+    <result column="SOURCE" property="source" jdbcType="VARCHAR" />
+    <result column="USER_VISIBLE" property="userVisible" jdbcType="VARCHAR" />
+    <result column="SURPLUS_USER" property="surplusUser" jdbcType="VARCHAR" />
+    <result column="OA_PASSWORD" property="oaPassword" jdbcType="VARCHAR" />
+    <result column="PERSON_STATE" property="personState" jdbcType="VARCHAR" />
+    <result column="MARITAL_STATUS" property="maritalStatus" jdbcType="VARCHAR" />
+    <result column="NATIVE_PLACE_PROVINCE" property="nativePlaceProvince" jdbcType="VARCHAR" />
+    <result column="NATIVE_PLACE_CITY" property="nativePlaceCity" jdbcType="VARCHAR" />
+    <result column="USER_LEVEL" property="userLevel" jdbcType="VARCHAR" />
+    <result column="DRIVING_LICENCE" property="drivingLicence" jdbcType="VARCHAR" />
+    <result column="ENGLISH_NAME" property="englishName" jdbcType="VARCHAR" />
+    <result column="OLD_PASSWORD" property="oldPassword" jdbcType="VARCHAR" />
+    <result column="OLD_DEPT_ID" property="oldDeptId" jdbcType="VARCHAR" />
+    <result column="LOGIN_ERROR_NUM" property="loginErrorNum" jdbcType="NUMERIC" />
+    <result column="LOGIN_ERROR_DATE" property="loginErrorDate" jdbcType="VARCHAR" />
+    <result column="LASTMAC" property="lastmac" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    USER_ID, USER_NAME, LOGIN_ID, USER_PASSWORD, USER_SEX, AUDIT_YEAR, UNIT_ID, DEPT_ID, 
+    STATION, OFFICE_PHONE, PHONE, EMAIL, BIRTHDAY, NATION, BORN_PLACE, PAPER_NAME, PAPER_NUM, 
+    EDUCATION, GRA_COLLEGE, LEAGUE, JOIN_TIME, WORK_STATUS, USER_STATE, AUDIT_USER_TYPE, 
+    REMARK, SORTFLAG, CREATEBY, CREATEDATE, UPDATEBY, UPDATEDATE, USER_TYPE, POLITICAL_LANDSCAPE, 
+    HAVEJOB_DATE, LEAVEJOB_DATE, TRAIN_COLLEGE, FAX, MAILCODE, EMAIL_OUT, ROOMNO, MOBILE, 
+    LINE_PHONE, ADDR, EXPERT_JB, EXPERT_GOOD_AT, EXPERT, ISSA, DESKTOP, LASTIP, PICTURENAME, 
+    GRAPHNAME, LOGINFLAG, AUDIT_ORGAN, PROFESSIONAL_BACKGROUND, PROFESSIONAL_TECH_QUAL, 
+    SOURCE, USER_VISIBLE, SURPLUS_USER, OA_PASSWORD, PERSON_STATE, MARITAL_STATUS, NATIVE_PLACE_PROVINCE, 
+    NATIVE_PLACE_CITY, USER_LEVEL, DRIVING_LICENCE, ENGLISH_NAME, OLD_PASSWORD, OLD_DEPT_ID, 
+    LOGIN_ERROR_NUM, LOGIN_ERROR_DATE, LASTMAC
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from GZAUDIT.MT_BS_USER
+    where USER_ID = #{userId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from GZAUDIT.MT_BS_USER
+    where USER_ID = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.gov.gzaudit.performanceAppraise.pojo.user.gzaudit.User" >
+    insert into GZAUDIT.MT_BS_USER (USER_ID, USER_NAME, LOGIN_ID, 
+      USER_PASSWORD, USER_SEX, AUDIT_YEAR, 
+      UNIT_ID, DEPT_ID, STATION, 
+      OFFICE_PHONE, PHONE, EMAIL, 
+      BIRTHDAY, NATION, BORN_PLACE, 
+      PAPER_NAME, PAPER_NUM, EDUCATION, 
+      GRA_COLLEGE, LEAGUE, JOIN_TIME, 
+      WORK_STATUS, USER_STATE, AUDIT_USER_TYPE, 
+      REMARK, SORTFLAG, CREATEBY, 
+      CREATEDATE, UPDATEBY, UPDATEDATE, 
+      USER_TYPE, POLITICAL_LANDSCAPE, HAVEJOB_DATE, 
+      LEAVEJOB_DATE, TRAIN_COLLEGE, FAX, 
+      MAILCODE, EMAIL_OUT, ROOMNO, 
+      MOBILE, LINE_PHONE, ADDR, 
+      EXPERT_JB, EXPERT_GOOD_AT, EXPERT, 
+      ISSA, DESKTOP, LASTIP, 
+      PICTURENAME, GRAPHNAME, LOGINFLAG, 
+      AUDIT_ORGAN, PROFESSIONAL_BACKGROUND, PROFESSIONAL_TECH_QUAL, 
+      SOURCE, USER_VISIBLE, SURPLUS_USER, 
+      OA_PASSWORD, PERSON_STATE, MARITAL_STATUS, 
+      NATIVE_PLACE_PROVINCE, NATIVE_PLACE_CITY, USER_LEVEL, 
+      DRIVING_LICENCE, ENGLISH_NAME, OLD_PASSWORD, 
+      OLD_DEPT_ID, LOGIN_ERROR_NUM, LOGIN_ERROR_DATE, 
+      LASTMAC)
+    values (#{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{loginId,jdbcType=VARCHAR}, 
+      #{userPassword,jdbcType=VARCHAR}, #{userSex,jdbcType=VARCHAR}, #{auditYear,jdbcType=NUMERIC}, 
+      #{unitId,jdbcType=VARCHAR}, #{deptId,jdbcType=VARCHAR}, #{station,jdbcType=VARCHAR}, 
+      #{officePhone,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{birthday,jdbcType=TIMESTAMP}, #{nation,jdbcType=VARCHAR}, #{bornPlace,jdbcType=VARCHAR}, 
+      #{paperName,jdbcType=VARCHAR}, #{paperNum,jdbcType=VARCHAR}, #{education,jdbcType=VARCHAR}, 
+      #{graCollege,jdbcType=VARCHAR}, #{league,jdbcType=VARCHAR}, #{joinTime,jdbcType=TIMESTAMP}, 
+      #{workStatus,jdbcType=VARCHAR}, #{userState,jdbcType=NUMERIC}, #{auditUserType,jdbcType=NUMERIC}, 
+      #{remark,jdbcType=VARCHAR}, #{sortflag,jdbcType=NUMERIC}, #{createby,jdbcType=VARCHAR}, 
+      #{createdate,jdbcType=TIMESTAMP}, #{updateby,jdbcType=VARCHAR}, #{updatedate,jdbcType=TIMESTAMP}, 
+      #{userType,jdbcType=VARCHAR}, #{politicalLandscape,jdbcType=VARCHAR}, #{havejobDate,jdbcType=TIMESTAMP}, 
+      #{leavejobDate,jdbcType=TIMESTAMP}, #{trainCollege,jdbcType=VARCHAR}, #{fax,jdbcType=VARCHAR}, 
+      #{mailcode,jdbcType=VARCHAR}, #{emailOut,jdbcType=VARCHAR}, #{roomno,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{linePhone,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, 
+      #{expertJb,jdbcType=VARCHAR}, #{expertGoodAt,jdbcType=VARCHAR}, #{expert,jdbcType=NUMERIC}, 
+      #{issa,jdbcType=NUMERIC}, #{desktop,jdbcType=VARCHAR}, #{lastip,jdbcType=VARCHAR}, 
+      #{picturename,jdbcType=VARCHAR}, #{graphname,jdbcType=VARCHAR}, #{loginflag,jdbcType=NUMERIC}, 
+      #{auditOrgan,jdbcType=VARCHAR}, #{professionalBackground,jdbcType=VARCHAR}, #{professionalTechQual,jdbcType=VARCHAR}, 
+      #{source,jdbcType=VARCHAR}, #{userVisible,jdbcType=VARCHAR}, #{surplusUser,jdbcType=VARCHAR}, 
+      #{oaPassword,jdbcType=VARCHAR}, #{personState,jdbcType=VARCHAR}, #{maritalStatus,jdbcType=VARCHAR}, 
+      #{nativePlaceProvince,jdbcType=VARCHAR}, #{nativePlaceCity,jdbcType=VARCHAR}, #{userLevel,jdbcType=VARCHAR}, 
+      #{drivingLicence,jdbcType=VARCHAR}, #{englishName,jdbcType=VARCHAR}, #{oldPassword,jdbcType=VARCHAR}, 
+      #{oldDeptId,jdbcType=VARCHAR}, #{loginErrorNum,jdbcType=NUMERIC}, #{loginErrorDate,jdbcType=VARCHAR}, 
+      #{lastmac,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.gov.gzaudit.performanceAppraise.pojo.user.gzaudit.User" >
+    insert into GZAUDIT.MT_BS_USER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="userName != null" >
+        USER_NAME,
+      </if>
+      <if test="loginId != null" >
+        LOGIN_ID,
+      </if>
+      <if test="userPassword != null" >
+        USER_PASSWORD,
+      </if>
+      <if test="userSex != null" >
+        USER_SEX,
+      </if>
+      <if test="auditYear != null" >
+        AUDIT_YEAR,
+      </if>
+      <if test="unitId != null" >
+        UNIT_ID,
+      </if>
+      <if test="deptId != null" >
+        DEPT_ID,
+      </if>
+      <if test="station != null" >
+        STATION,
+      </if>
+      <if test="officePhone != null" >
+        OFFICE_PHONE,
+      </if>
+      <if test="phone != null" >
+        PHONE,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="birthday != null" >
+        BIRTHDAY,
+      </if>
+      <if test="nation != null" >
+        NATION,
+      </if>
+      <if test="bornPlace != null" >
+        BORN_PLACE,
+      </if>
+      <if test="paperName != null" >
+        PAPER_NAME,
+      </if>
+      <if test="paperNum != null" >
+        PAPER_NUM,
+      </if>
+      <if test="education != null" >
+        EDUCATION,
+      </if>
+      <if test="graCollege != null" >
+        GRA_COLLEGE,
+      </if>
+      <if test="league != null" >
+        LEAGUE,
+      </if>
+      <if test="joinTime != null" >
+        JOIN_TIME,
+      </if>
+      <if test="workStatus != null" >
+        WORK_STATUS,
+      </if>
+      <if test="userState != null" >
+        USER_STATE,
+      </if>
+      <if test="auditUserType != null" >
+        AUDIT_USER_TYPE,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="sortflag != null" >
+        SORTFLAG,
+      </if>
+      <if test="createby != null" >
+        CREATEBY,
+      </if>
+      <if test="createdate != null" >
+        CREATEDATE,
+      </if>
+      <if test="updateby != null" >
+        UPDATEBY,
+      </if>
+      <if test="updatedate != null" >
+        UPDATEDATE,
+      </if>
+      <if test="userType != null" >
+        USER_TYPE,
+      </if>
+      <if test="politicalLandscape != null" >
+        POLITICAL_LANDSCAPE,
+      </if>
+      <if test="havejobDate != null" >
+        HAVEJOB_DATE,
+      </if>
+      <if test="leavejobDate != null" >
+        LEAVEJOB_DATE,
+      </if>
+      <if test="trainCollege != null" >
+        TRAIN_COLLEGE,
+      </if>
+      <if test="fax != null" >
+        FAX,
+      </if>
+      <if test="mailcode != null" >
+        MAILCODE,
+      </if>
+      <if test="emailOut != null" >
+        EMAIL_OUT,
+      </if>
+      <if test="roomno != null" >
+        ROOMNO,
+      </if>
+      <if test="mobile != null" >
+        MOBILE,
+      </if>
+      <if test="linePhone != null" >
+        LINE_PHONE,
+      </if>
+      <if test="addr != null" >
+        ADDR,
+      </if>
+      <if test="expertJb != null" >
+        EXPERT_JB,
+      </if>
+      <if test="expertGoodAt != null" >
+        EXPERT_GOOD_AT,
+      </if>
+      <if test="expert != null" >
+        EXPERT,
+      </if>
+      <if test="issa != null" >
+        ISSA,
+      </if>
+      <if test="desktop != null" >
+        DESKTOP,
+      </if>
+      <if test="lastip != null" >
+        LASTIP,
+      </if>
+      <if test="picturename != null" >
+        PICTURENAME,
+      </if>
+      <if test="graphname != null" >
+        GRAPHNAME,
+      </if>
+      <if test="loginflag != null" >
+        LOGINFLAG,
+      </if>
+      <if test="auditOrgan != null" >
+        AUDIT_ORGAN,
+      </if>
+      <if test="professionalBackground != null" >
+        PROFESSIONAL_BACKGROUND,
+      </if>
+      <if test="professionalTechQual != null" >
+        PROFESSIONAL_TECH_QUAL,
+      </if>
+      <if test="source != null" >
+        SOURCE,
+      </if>
+      <if test="userVisible != null" >
+        USER_VISIBLE,
+      </if>
+      <if test="surplusUser != null" >
+        SURPLUS_USER,
+      </if>
+      <if test="oaPassword != null" >
+        OA_PASSWORD,
+      </if>
+      <if test="personState != null" >
+        PERSON_STATE,
+      </if>
+      <if test="maritalStatus != null" >
+        MARITAL_STATUS,
+      </if>
+      <if test="nativePlaceProvince != null" >
+        NATIVE_PLACE_PROVINCE,
+      </if>
+      <if test="nativePlaceCity != null" >
+        NATIVE_PLACE_CITY,
+      </if>
+      <if test="userLevel != null" >
+        USER_LEVEL,
+      </if>
+      <if test="drivingLicence != null" >
+        DRIVING_LICENCE,
+      </if>
+      <if test="englishName != null" >
+        ENGLISH_NAME,
+      </if>
+      <if test="oldPassword != null" >
+        OLD_PASSWORD,
+      </if>
+      <if test="oldDeptId != null" >
+        OLD_DEPT_ID,
+      </if>
+      <if test="loginErrorNum != null" >
+        LOGIN_ERROR_NUM,
+      </if>
+      <if test="loginErrorDate != null" >
+        LOGIN_ERROR_DATE,
+      </if>
+      <if test="lastmac != null" >
+        LASTMAC,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginId != null" >
+        #{loginId,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null" >
+        #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null" >
+        #{userSex,jdbcType=VARCHAR},
+      </if>
+      <if test="auditYear != null" >
+        #{auditYear,jdbcType=NUMERIC},
+      </if>
+      <if test="unitId != null" >
+        #{unitId,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null" >
+        #{deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="station != null" >
+        #{station,jdbcType=VARCHAR},
+      </if>
+      <if test="officePhone != null" >
+        #{officePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nation != null" >
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="bornPlace != null" >
+        #{bornPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="paperName != null" >
+        #{paperName,jdbcType=VARCHAR},
+      </if>
+      <if test="paperNum != null" >
+        #{paperNum,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="graCollege != null" >
+        #{graCollege,jdbcType=VARCHAR},
+      </if>
+      <if test="league != null" >
+        #{league,jdbcType=VARCHAR},
+      </if>
+      <if test="joinTime != null" >
+        #{joinTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="workStatus != null" >
+        #{workStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="userState != null" >
+        #{userState,jdbcType=NUMERIC},
+      </if>
+      <if test="auditUserType != null" >
+        #{auditUserType,jdbcType=NUMERIC},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="sortflag != null" >
+        #{sortflag,jdbcType=NUMERIC},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null" >
+        #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null" >
+        #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="politicalLandscape != null" >
+        #{politicalLandscape,jdbcType=VARCHAR},
+      </if>
+      <if test="havejobDate != null" >
+        #{havejobDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leavejobDate != null" >
+        #{leavejobDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trainCollege != null" >
+        #{trainCollege,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="mailcode != null" >
+        #{mailcode,jdbcType=VARCHAR},
+      </if>
+      <if test="emailOut != null" >
+        #{emailOut,jdbcType=VARCHAR},
+      </if>
+      <if test="roomno != null" >
+        #{roomno,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="linePhone != null" >
+        #{linePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="expertJb != null" >
+        #{expertJb,jdbcType=VARCHAR},
+      </if>
+      <if test="expertGoodAt != null" >
+        #{expertGoodAt,jdbcType=VARCHAR},
+      </if>
+      <if test="expert != null" >
+        #{expert,jdbcType=NUMERIC},
+      </if>
+      <if test="issa != null" >
+        #{issa,jdbcType=NUMERIC},
+      </if>
+      <if test="desktop != null" >
+        #{desktop,jdbcType=VARCHAR},
+      </if>
+      <if test="lastip != null" >
+        #{lastip,jdbcType=VARCHAR},
+      </if>
+      <if test="picturename != null" >
+        #{picturename,jdbcType=VARCHAR},
+      </if>
+      <if test="graphname != null" >
+        #{graphname,jdbcType=VARCHAR},
+      </if>
+      <if test="loginflag != null" >
+        #{loginflag,jdbcType=NUMERIC},
+      </if>
+      <if test="auditOrgan != null" >
+        #{auditOrgan,jdbcType=VARCHAR},
+      </if>
+      <if test="professionalBackground != null" >
+        #{professionalBackground,jdbcType=VARCHAR},
+      </if>
+      <if test="professionalTechQual != null" >
+        #{professionalTechQual,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null" >
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="userVisible != null" >
+        #{userVisible,jdbcType=VARCHAR},
+      </if>
+      <if test="surplusUser != null" >
+        #{surplusUser,jdbcType=VARCHAR},
+      </if>
+      <if test="oaPassword != null" >
+        #{oaPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="personState != null" >
+        #{personState,jdbcType=VARCHAR},
+      </if>
+      <if test="maritalStatus != null" >
+        #{maritalStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="nativePlaceProvince != null" >
+        #{nativePlaceProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="nativePlaceCity != null" >
+        #{nativePlaceCity,jdbcType=VARCHAR},
+      </if>
+      <if test="userLevel != null" >
+        #{userLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="drivingLicence != null" >
+        #{drivingLicence,jdbcType=VARCHAR},
+      </if>
+      <if test="englishName != null" >
+        #{englishName,jdbcType=VARCHAR},
+      </if>
+      <if test="oldPassword != null" >
+        #{oldPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="oldDeptId != null" >
+        #{oldDeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="loginErrorNum != null" >
+        #{loginErrorNum,jdbcType=NUMERIC},
+      </if>
+      <if test="loginErrorDate != null" >
+        #{loginErrorDate,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmac != null" >
+        #{lastmac,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.gov.gzaudit.performanceAppraise.pojo.user.gzaudit.User" >
+    update GZAUDIT.MT_BS_USER
+    <set >
+      <if test="userName != null" >
+        USER_NAME = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginId != null" >
+        LOGIN_ID = #{loginId,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null" >
+        USER_PASSWORD = #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null" >
+        USER_SEX = #{userSex,jdbcType=VARCHAR},
+      </if>
+      <if test="auditYear != null" >
+        AUDIT_YEAR = #{auditYear,jdbcType=NUMERIC},
+      </if>
+      <if test="unitId != null" >
+        UNIT_ID = #{unitId,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null" >
+        DEPT_ID = #{deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="station != null" >
+        STATION = #{station,jdbcType=VARCHAR},
+      </if>
+      <if test="officePhone != null" >
+        OFFICE_PHONE = #{officePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        BIRTHDAY = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nation != null" >
+        NATION = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="bornPlace != null" >
+        BORN_PLACE = #{bornPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="paperName != null" >
+        PAPER_NAME = #{paperName,jdbcType=VARCHAR},
+      </if>
+      <if test="paperNum != null" >
+        PAPER_NUM = #{paperNum,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        EDUCATION = #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="graCollege != null" >
+        GRA_COLLEGE = #{graCollege,jdbcType=VARCHAR},
+      </if>
+      <if test="league != null" >
+        LEAGUE = #{league,jdbcType=VARCHAR},
+      </if>
+      <if test="joinTime != null" >
+        JOIN_TIME = #{joinTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="workStatus != null" >
+        WORK_STATUS = #{workStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="userState != null" >
+        USER_STATE = #{userState,jdbcType=NUMERIC},
+      </if>
+      <if test="auditUserType != null" >
+        AUDIT_USER_TYPE = #{auditUserType,jdbcType=NUMERIC},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="sortflag != null" >
+        SORTFLAG = #{sortflag,jdbcType=NUMERIC},
+      </if>
+      <if test="createby != null" >
+        CREATEBY = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        CREATEDATE = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null" >
+        UPDATEBY = #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null" >
+        UPDATEDATE = #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userType != null" >
+        USER_TYPE = #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="politicalLandscape != null" >
+        POLITICAL_LANDSCAPE = #{politicalLandscape,jdbcType=VARCHAR},
+      </if>
+      <if test="havejobDate != null" >
+        HAVEJOB_DATE = #{havejobDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leavejobDate != null" >
+        LEAVEJOB_DATE = #{leavejobDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trainCollege != null" >
+        TRAIN_COLLEGE = #{trainCollege,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        FAX = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="mailcode != null" >
+        MAILCODE = #{mailcode,jdbcType=VARCHAR},
+      </if>
+      <if test="emailOut != null" >
+        EMAIL_OUT = #{emailOut,jdbcType=VARCHAR},
+      </if>
+      <if test="roomno != null" >
+        ROOMNO = #{roomno,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        MOBILE = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="linePhone != null" >
+        LINE_PHONE = #{linePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        ADDR = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="expertJb != null" >
+        EXPERT_JB = #{expertJb,jdbcType=VARCHAR},
+      </if>
+      <if test="expertGoodAt != null" >
+        EXPERT_GOOD_AT = #{expertGoodAt,jdbcType=VARCHAR},
+      </if>
+      <if test="expert != null" >
+        EXPERT = #{expert,jdbcType=NUMERIC},
+      </if>
+      <if test="issa != null" >
+        ISSA = #{issa,jdbcType=NUMERIC},
+      </if>
+      <if test="desktop != null" >
+        DESKTOP = #{desktop,jdbcType=VARCHAR},
+      </if>
+      <if test="lastip != null" >
+        LASTIP = #{lastip,jdbcType=VARCHAR},
+      </if>
+      <if test="picturename != null" >
+        PICTURENAME = #{picturename,jdbcType=VARCHAR},
+      </if>
+      <if test="graphname != null" >
+        GRAPHNAME = #{graphname,jdbcType=VARCHAR},
+      </if>
+      <if test="loginflag != null" >
+        LOGINFLAG = #{loginflag,jdbcType=NUMERIC},
+      </if>
+      <if test="auditOrgan != null" >
+        AUDIT_ORGAN = #{auditOrgan,jdbcType=VARCHAR},
+      </if>
+      <if test="professionalBackground != null" >
+        PROFESSIONAL_BACKGROUND = #{professionalBackground,jdbcType=VARCHAR},
+      </if>
+      <if test="professionalTechQual != null" >
+        PROFESSIONAL_TECH_QUAL = #{professionalTechQual,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null" >
+        SOURCE = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="userVisible != null" >
+        USER_VISIBLE = #{userVisible,jdbcType=VARCHAR},
+      </if>
+      <if test="surplusUser != null" >
+        SURPLUS_USER = #{surplusUser,jdbcType=VARCHAR},
+      </if>
+      <if test="oaPassword != null" >
+        OA_PASSWORD = #{oaPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="personState != null" >
+        PERSON_STATE = #{personState,jdbcType=VARCHAR},
+      </if>
+      <if test="maritalStatus != null" >
+        MARITAL_STATUS = #{maritalStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="nativePlaceProvince != null" >
+        NATIVE_PLACE_PROVINCE = #{nativePlaceProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="nativePlaceCity != null" >
+        NATIVE_PLACE_CITY = #{nativePlaceCity,jdbcType=VARCHAR},
+      </if>
+      <if test="userLevel != null" >
+        USER_LEVEL = #{userLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="drivingLicence != null" >
+        DRIVING_LICENCE = #{drivingLicence,jdbcType=VARCHAR},
+      </if>
+      <if test="englishName != null" >
+        ENGLISH_NAME = #{englishName,jdbcType=VARCHAR},
+      </if>
+      <if test="oldPassword != null" >
+        OLD_PASSWORD = #{oldPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="oldDeptId != null" >
+        OLD_DEPT_ID = #{oldDeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="loginErrorNum != null" >
+        LOGIN_ERROR_NUM = #{loginErrorNum,jdbcType=NUMERIC},
+      </if>
+      <if test="loginErrorDate != null" >
+        LOGIN_ERROR_DATE = #{loginErrorDate,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmac != null" >
+        LASTMAC = #{lastmac,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where USER_ID = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.gov.gzaudit.performanceAppraise.pojo.user.gzaudit.User" >
+    update GZAUDIT.MT_BS_USER
+    set USER_NAME = #{userName,jdbcType=VARCHAR},
+      LOGIN_ID = #{loginId,jdbcType=VARCHAR},
+      USER_PASSWORD = #{userPassword,jdbcType=VARCHAR},
+      USER_SEX = #{userSex,jdbcType=VARCHAR},
+      AUDIT_YEAR = #{auditYear,jdbcType=NUMERIC},
+      UNIT_ID = #{unitId,jdbcType=VARCHAR},
+      DEPT_ID = #{deptId,jdbcType=VARCHAR},
+      STATION = #{station,jdbcType=VARCHAR},
+      OFFICE_PHONE = #{officePhone,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      BIRTHDAY = #{birthday,jdbcType=TIMESTAMP},
+      NATION = #{nation,jdbcType=VARCHAR},
+      BORN_PLACE = #{bornPlace,jdbcType=VARCHAR},
+      PAPER_NAME = #{paperName,jdbcType=VARCHAR},
+      PAPER_NUM = #{paperNum,jdbcType=VARCHAR},
+      EDUCATION = #{education,jdbcType=VARCHAR},
+      GRA_COLLEGE = #{graCollege,jdbcType=VARCHAR},
+      LEAGUE = #{league,jdbcType=VARCHAR},
+      JOIN_TIME = #{joinTime,jdbcType=TIMESTAMP},
+      WORK_STATUS = #{workStatus,jdbcType=VARCHAR},
+      USER_STATE = #{userState,jdbcType=NUMERIC},
+      AUDIT_USER_TYPE = #{auditUserType,jdbcType=NUMERIC},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      SORTFLAG = #{sortflag,jdbcType=NUMERIC},
+      CREATEBY = #{createby,jdbcType=VARCHAR},
+      CREATEDATE = #{createdate,jdbcType=TIMESTAMP},
+      UPDATEBY = #{updateby,jdbcType=VARCHAR},
+      UPDATEDATE = #{updatedate,jdbcType=TIMESTAMP},
+      USER_TYPE = #{userType,jdbcType=VARCHAR},
+      POLITICAL_LANDSCAPE = #{politicalLandscape,jdbcType=VARCHAR},
+      HAVEJOB_DATE = #{havejobDate,jdbcType=TIMESTAMP},
+      LEAVEJOB_DATE = #{leavejobDate,jdbcType=TIMESTAMP},
+      TRAIN_COLLEGE = #{trainCollege,jdbcType=VARCHAR},
+      FAX = #{fax,jdbcType=VARCHAR},
+      MAILCODE = #{mailcode,jdbcType=VARCHAR},
+      EMAIL_OUT = #{emailOut,jdbcType=VARCHAR},
+      ROOMNO = #{roomno,jdbcType=VARCHAR},
+      MOBILE = #{mobile,jdbcType=VARCHAR},
+      LINE_PHONE = #{linePhone,jdbcType=VARCHAR},
+      ADDR = #{addr,jdbcType=VARCHAR},
+      EXPERT_JB = #{expertJb,jdbcType=VARCHAR},
+      EXPERT_GOOD_AT = #{expertGoodAt,jdbcType=VARCHAR},
+      EXPERT = #{expert,jdbcType=NUMERIC},
+      ISSA = #{issa,jdbcType=NUMERIC},
+      DESKTOP = #{desktop,jdbcType=VARCHAR},
+      LASTIP = #{lastip,jdbcType=VARCHAR},
+      PICTURENAME = #{picturename,jdbcType=VARCHAR},
+      GRAPHNAME = #{graphname,jdbcType=VARCHAR},
+      LOGINFLAG = #{loginflag,jdbcType=NUMERIC},
+      AUDIT_ORGAN = #{auditOrgan,jdbcType=VARCHAR},
+      PROFESSIONAL_BACKGROUND = #{professionalBackground,jdbcType=VARCHAR},
+      PROFESSIONAL_TECH_QUAL = #{professionalTechQual,jdbcType=VARCHAR},
+      SOURCE = #{source,jdbcType=VARCHAR},
+      USER_VISIBLE = #{userVisible,jdbcType=VARCHAR},
+      SURPLUS_USER = #{surplusUser,jdbcType=VARCHAR},
+      OA_PASSWORD = #{oaPassword,jdbcType=VARCHAR},
+      PERSON_STATE = #{personState,jdbcType=VARCHAR},
+      MARITAL_STATUS = #{maritalStatus,jdbcType=VARCHAR},
+      NATIVE_PLACE_PROVINCE = #{nativePlaceProvince,jdbcType=VARCHAR},
+      NATIVE_PLACE_CITY = #{nativePlaceCity,jdbcType=VARCHAR},
+      USER_LEVEL = #{userLevel,jdbcType=VARCHAR},
+      DRIVING_LICENCE = #{drivingLicence,jdbcType=VARCHAR},
+      ENGLISH_NAME = #{englishName,jdbcType=VARCHAR},
+      OLD_PASSWORD = #{oldPassword,jdbcType=VARCHAR},
+      OLD_DEPT_ID = #{oldDeptId,jdbcType=VARCHAR},
+      LOGIN_ERROR_NUM = #{loginErrorNum,jdbcType=NUMERIC},
+      LOGIN_ERROR_DATE = #{loginErrorDate,jdbcType=VARCHAR},
+      LASTMAC = #{lastmac,jdbcType=VARCHAR}
+    where USER_ID = #{userId,jdbcType=VARCHAR}
+  </update>
+  <select id="login" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from GZAUDIT.MT_BS_USER
+    where LOGIN_ID = #{loginId,jdbcType=VARCHAR} 
+    and ( USER_PASSWORD = #{password,jdbcType=VARCHAR} or OA_PASSWORD = #{password,jdbcType=VARCHAR})
+  </select>
+</mapper>

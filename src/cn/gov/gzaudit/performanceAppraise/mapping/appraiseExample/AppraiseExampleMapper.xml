@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.gov.gzaudit.performanceAppraise.dao.appraiseExample.AppraiseExampleMapper" >
+  <resultMap id="BaseResultMap" type="cn.gov.gzaudit.performanceAppraise.pojo.appraiseExample.AppraiseExample" >
+    <id column="EXAMPLE_ID" property="exampleId" jdbcType="VARCHAR" />
+    <result column="APPRAISE_MOULD_ID" property="appraiseMouldId" jdbcType="VARCHAR" />
+    <result column="EXAMPLE_TITLE" property="exampleTitle" jdbcType="VARCHAR" />
+    <result column="UPDATE_USER" property="updateUser" jdbcType="VARCHAR" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    EXAMPLE_ID, APPRAISE_MOULD_ID, EXAMPLE_TITLE, UPDATE_USER, UPDATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_APPRAISE_EXAMPLE
+    where EXAMPLE_ID = #{exampleId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from T_APPRAISE_EXAMPLE
+    where EXAMPLE_ID = #{exampleId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.gov.gzaudit.performanceAppraise.pojo.appraiseExample.AppraiseExample" >
+    insert into T_APPRAISE_EXAMPLE (EXAMPLE_ID, APPRAISE_MOULD_ID, EXAMPLE_TITLE, 
+      UPDATE_USER, UPDATE_TIME)
+    values (#{exampleId,jdbcType=VARCHAR}, #{appraiseMouldId,jdbcType=VARCHAR}, #{exampleTitle,jdbcType=VARCHAR}, 
+      #{updateUser,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.gov.gzaudit.performanceAppraise.pojo.appraiseExample.AppraiseExample" >
+    insert into T_APPRAISE_EXAMPLE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="exampleId != null" >
+        EXAMPLE_ID,
+      </if>
+      <if test="appraiseMouldId != null" >
+        APPRAISE_MOULD_ID,
+      </if>
+      <if test="exampleTitle != null" >
+        EXAMPLE_TITLE,
+      </if>
+      <if test="updateUser != null" >
+        UPDATE_USER,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="exampleId != null" >
+        #{exampleId,jdbcType=VARCHAR},
+      </if>
+      <if test="appraiseMouldId != null" >
+        #{appraiseMouldId,jdbcType=VARCHAR},
+      </if>
+      <if test="exampleTitle != null" >
+        #{exampleTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUser != null" >
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.gov.gzaudit.performanceAppraise.pojo.appraiseExample.AppraiseExample" >
+    update T_APPRAISE_EXAMPLE
+    <set >
+      <if test="appraiseMouldId != null" >
+        APPRAISE_MOULD_ID = #{appraiseMouldId,jdbcType=VARCHAR},
+      </if>
+      <if test="exampleTitle != null" >
+        EXAMPLE_TITLE = #{exampleTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUser != null" >
+        UPDATE_USER = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where EXAMPLE_ID = #{exampleId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.gov.gzaudit.performanceAppraise.pojo.appraiseExample.AppraiseExample" >
+    update T_APPRAISE_EXAMPLE
+    set APPRAISE_MOULD_ID = #{appraiseMouldId,jdbcType=VARCHAR},
+      EXAMPLE_TITLE = #{exampleTitle,jdbcType=VARCHAR},
+      UPDATE_USER = #{updateUser,jdbcType=VARCHAR},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
+    where EXAMPLE_ID = #{exampleId,jdbcType=VARCHAR}
+  </update>
+  <select id="getAppraiseExampleById" resultType="java.util.HashMap" parameterType="java.lang.String" >
+  	select t1.EXAMPLE_ID,t1.APPRAISE_MOULD_ID,t1.EXAMPLE_TITLE,
+			t2.APPRAISE_CONTENT_ID,t2.SORT_FLAG,t2.ITEMS,t2.APPRAISE_OBJECT,t2.CONTENT,t2.REQUIREMENT,t2.STANDARD_SCORE,t2.DEDUCT_POINTS_ITEMS 
+	from T_APPRAISE_EXAMPLE t1 
+	left join V_APPRAISE_MOULD t2 on t1.APPRAISE_MOULD_ID = t2.APPRAISE_MOULD_ID
+  	where EXAMPLE_ID = #{exampleId,jdbcType=VARCHAR}
+  </select>
+</mapper>
